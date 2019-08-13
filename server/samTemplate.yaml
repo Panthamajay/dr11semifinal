@@ -1,0 +1,1488 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Globals:
+  Api:
+    # enable CORS; to make more specific, change the origin wildcard
+    # to a particular domain name, e.g. "'www.example.com'"
+    Cors:
+      AllowMethods: "'*'"
+      AllowHeaders: "'*'"
+      AllowOrigin: "'*'"
+Resources:
+  Dream11Gateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Test
+      EndpointConfiguration: REGIONAL
+      DefinitionBody:      
+        swagger: "2.0"
+        info:
+          version: "2019-08-12T15:52:03Z"
+          title: "Dream11Gateway"
+        basePath: "/Test"
+        schemes:
+        - "https"
+        paths:
+          /after-match-update-wallet:
+            post:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_aftermatchupdatewalletandstatus/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"MatchId\" :\
+                    \ \"$input.params('MatchId')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /ballbyball:
+            post:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_ballbyball/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"matchid\" :\"\
+                    $input.params('matchid')\",\n\"time\" :\"$input.params('time')\",\n\"\
+                    name\" :\"$input.params('name')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /fetch-data:
+            post:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                credentials: "arn:aws:iam::488599217855:role/Bangalore_PE"
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_fetchdata/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{ }"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /fetchplayerdata:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              parameters:
+              - name: "MatchId"
+                in: "query"
+                required: false
+                type: "string"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_fetchplayerdata/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "{\n    \"MatchId\" : \"$input.params('MatchId')\",\n\
+                    \    \"name\" : \"$input.params('name')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /leaderboard-by-league:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                200:
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_leaderboardbyleague/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"LeagueId\"\
+                    \ : \"$input.params('LeagueId')\",\n\"Squad\" : \"$input.params('Squad')\"\
+                    \n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                200:
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /leaderboard-by-match:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_leaderboardbymatch/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"MatchId\" :\
+                    \ \"$input.params('MatchId')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /listmatches:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              parameters:
+              - name: "name"
+                in: "query"
+                required: false
+                type: "string"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_listmatches/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"username\"\
+                    \ : \"$input.params('username')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /livescore:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_livescore/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"MatchId\":\
+                    \ \"$input.params('MatchId')\",\n\"name\": \"$input.params('name')\"\n\
+                    }"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /my-opponents-team:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_myopponentsteam/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{ \n\"name\" : \"\
+                    $input.params('name')\",\n\"matchid\" : \"$input.params('matchid')\",\n\
+                    \"privateid\" : \"$input.params('privateid')\"\n\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /mymatches:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_mymatches/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{ \n\"name\" : \"\
+                    $input.params('name')\"\n\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /player-check:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                200:
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Allow-Access-Control-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_playercheck/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Allow-Access-Control-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"squad\":\"\
+                    $input.params('squad')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                200:
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /playersstats:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                200:
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_playersstats/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{ \n\"name\" : \"\
+                    $input.params('name')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                200:
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /private-match:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_privatematches/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"MatchId\" :\
+                    \ \"$input.params('MatchId')\",\n\"Fee\" : \"$input.params('Fee')\",\n\
+                    \"limit\" : \"$input.params('limit')\",\n\"username\" : \"$input.params('username')\"\
+                    \n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /public-matches-list:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_publicmatches/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"username\"\
+                    \ : \"$input.params('username')\"\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /update-userwallet:
+            post:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_updateuserwallet/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{\n\"fee\" : \"\
+                    $input.params('fee')\",\n\"name\" : \"$input.params('name')\",\n\"sign\"\
+                    \ : \"$input.params('sign')\",\n\"email\" : \"$input.params('email')\"\
+                    \n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /user-data:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_userdata/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{ \n\"name\" : \"\
+                    $input.params('name')\",\n\"MatchId\" : \"$input.params('MatchId')\",\n\
+                    \"privateid\" : \"$input.params('privateid')\"\n\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /user-match-reg:
+            post:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_usermatchreg/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "{\n  \"matchid\": \"$input.params('matchid')\",\n  \"\
+                    name\": \"$input.params('name')\",\n  \"privateid\": \"$input.params('privateid')\"\
+                    ,\n  \"squad\": \"$input.params('squad')\",\n  \"leagueid\": \"$input.params('leagueid')\"\
+                    \n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+          /userprofile:
+            get:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_userprofile/invocations"
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_templates"
+                httpMethod: "POST"
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n{ \n\"name\" : \"\
+                    $input.params('name')\",\n\"email\" : \"$input.params('email')\"\n\n}"
+                contentHandling: "CONVERT_TO_TEXT"
+                type: "aws"
+            options:
+              consumes:
+              - "application/json"
+              produces:
+              - "application/json"
+              responses:
+                "200":
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Headers:
+                      type: "string"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: "when_no_match"
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: "mock"
+        definitions:
+          Empty:
+            type: "object"
+            title: "Empty Schema"
+
+  dr11listmatches:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_listmatches
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-listmatches.zip
+      Description: ''
+      MemorySize: 128
+      Timeout: 123
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /listmatches
+            Method: GET
+  dr11fetchdata:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_fetchdata
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-fetchdata.zip
+      Description: ''
+      MemorySize: 128
+      Timeout: 659
+      Role: 'arn:aws:iam::488599217855:role/full_access'
+      Events:
+        Api2:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /fetch-data
+            Method: POST
+  dr11userprofile:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_userprofile
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-userprofile.zip
+      Description: ''
+      MemorySize: 1088
+      Timeout: 218
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api3:
+          Type: Api
+          Properties:
+            Path: /MyResource
+            Method: ANY
+        Api4:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /userprofile
+            Method: GET
+  dr11mymatches:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_mymatches
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-mymatches.zip
+      Description: ''
+      MemorySize: 1920
+      Timeout: 137
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api5:
+          Type: Api
+          Properties:
+            Path: /mymatches
+            Method: GET
+        Api6:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /mymatches
+            Method: GET
+  dr11usermatchreg:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_usermatchreg
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-user-match-reg.zip
+      Description: ''
+      MemorySize: 1408
+      Timeout: 340
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api7:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /user-match-reg
+            Method: POST                        
+  dr11updateuserwallet:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_updateuserwallet
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-updateuserwallet.zip
+      Description: ''
+      MemorySize: 1024
+      Timeout: 215
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api8:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /update-userwallet
+            Method: POST
+  dr11ballbyball:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_ballbyball
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-ballbyball.zip
+      Description: ''
+      MemorySize: 704
+      Timeout: 183
+      Role: 'arn:aws:iam::488599217855:role/full_access'
+      Events:
+        Api9:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /ballbyball
+            Method: POST
+  fetchplayerdata:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_fetchplayerdata
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/fetch_player_data.zip
+      Description: ''
+      MemorySize: 1280
+      Timeout: 210
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api10:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /fetchplayerdata
+            Method: GET
+  leaderboardbymatch:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_leaderboardbymatch
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/leaderboard_by_match.zip
+      Description: ''
+      MemorySize: 1024
+      Timeout: 100
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api11:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /to-display-leaderboard
+            Method: POST
+        Api12:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /leaderboard-by-match
+            Method: GET
+        Api13:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /to-display-leaderboard
+            Method: GET
+  myopponentsteam:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_myopponentsteam
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/my_opponents_team.zip
+      Description: ''
+      MemorySize: 1280
+      Timeout: 340
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api14:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /my-opponents-team
+            Method: GET 
+  privatematch:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_privatematches
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/private_match.zip
+      Description: ''
+      MemorySize: 384
+      Timeout: 183
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api15:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /private-match
+            Method: GET  
+  dr11publicmatcheslist:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_publicmatches
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/dr11-publicmatcheslist.zip
+      Description: ''
+      MemorySize: 128
+      Timeout: 123
+      Role: 'arn:aws:iam::488599217855:role/full_access'
+      Events:
+        Api16:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /public-matches-list
+            Method: GET
+  userdata:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_userdata
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/user_data.zip
+      Description: ''
+      MemorySize: 1536
+      Timeout: 340
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api17:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /user-data
+            Method: GET
+  aftermatchupdatewalletandstatus:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_aftermatchupdatewalletandstatus
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/after_match_update_wallet_and_status.zip
+      Description: ''
+      MemorySize: 1344
+      Timeout: 345
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api18:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /after-match-update-wallet
+            Method: POST
+  livescore:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_livescore
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/live_score.zip
+      Description: ''
+      MemorySize: 832
+      Timeout: 183
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api19:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /livescore
+            Method: GET   
+  playersstats:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_playersstats
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/playersstats.zip
+      Description: ''
+      MemorySize: 128
+      Timeout: 3
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api20:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /playersstats
+            Method: GET
+  playercheck:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_playercheck
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/player_check.zip
+      Description: ''
+      MemorySize: 320
+      Timeout: 123
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api21:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: Dream11Gateway
+            Path: /player-check
+            Method: GET
+  leaderboardbyleague:
+    Type: 'AWS::Serverless::Function'
+    Dependson:
+    - Dream11Gateway
+    Properties:
+      FunctionName: auto_leaderboardbyleague
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./server/leaderboard_by_league.zip
+      Description: ''
+      MemorySize: 256
+      Timeout: 123
+      Role: 'arn:aws:iam::488599217855:role/DynamoDBFullLambdaAccess'
+      Events:
+        Api22:
+          Type: Api
+          Properties:
+            Path: /leaderboard-by-league
+            Method: GET
+Outputs:
+
+  RestApiId:
+      Description: API ID
+      Value: !Ref Dream11Gateway
+  ApiUrl:
+    Description: URL of the Test stage of the API endpoint
+    Value: !Sub "https://${Dream11Gateway}.execute-api.${AWS::Region}.amazonaws.com/Test"
+  
+                                                                                  
