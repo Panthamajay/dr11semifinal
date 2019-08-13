@@ -38,7 +38,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_aftermatchupdatewalletandstatus/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_aftermatchupdatewalletandstatus/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -95,7 +95,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_ballbyball/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_ballbyball/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -154,7 +154,7 @@ Resources:
                       type: "string"
               x-amazon-apigateway-integration:
                 credentials: "arn:aws:iam::488599217855:role/Bangalore_PE"
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_fetchdata/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_fetchdata/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -215,7 +215,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_fetchplayerdata/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_fetchplayerdata/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -330,7 +330,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_leaderboardbymatch/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_leaderboardbymatch/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -392,7 +392,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_listmatches/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_listmatches/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -449,7 +449,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_livescore/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_livescore/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -507,7 +507,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_myopponentsteam/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_myopponentsteam/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -565,7 +565,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_mymatches/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_mymatches/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -736,7 +736,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_privatematches/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_privatematches/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -795,7 +795,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_publicmatches/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_publicmatches/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -852,7 +852,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_updateuserwallet/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_updateuserwallet/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -911,7 +911,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_userdata/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_userdata/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -969,7 +969,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_usermatchreg/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_usermatchreg/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -1028,7 +1028,7 @@ Resources:
                     Access-Control-Allow-Origin:
                       type: "string"
               x-amazon-apigateway-integration:
-                uri: "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:488599217855:function:auto_userprofile/invocations"
+                uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:488599217855:function:auto_userprofile/invocations"
                 responses:
                   default:
                     statusCode: "200"
@@ -1083,7 +1083,7 @@ Resources:
       FunctionName: auto_listmatches
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-listmatches.zip
+      CodeUri: ./dr11-listmatches.zip
       Description: ''
       MemorySize: 128
       Timeout: 123
@@ -1104,7 +1104,7 @@ Resources:
       FunctionName: auto_fetchdata
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-fetchdata.zip
+      CodeUri: ./dr11-fetchdata.zip
       Description: ''
       MemorySize: 128
       Timeout: 659
@@ -1125,7 +1125,7 @@ Resources:
       FunctionName: auto_userprofile
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-userprofile.zip
+      CodeUri: ./dr11-userprofile.zip
       Description: ''
       MemorySize: 1088
       Timeout: 218
@@ -1151,7 +1151,7 @@ Resources:
       FunctionName: auto_mymatches
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-mymatches.zip
+      CodeUri: ./dr11-mymatches.zip
       Description: ''
       MemorySize: 1920
       Timeout: 137
@@ -1177,7 +1177,7 @@ Resources:
       FunctionName: auto_usermatchreg
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-user-match-reg.zip
+      CodeUri: ./dr11-user-match-reg.zip
       Description: ''
       MemorySize: 1408
       Timeout: 340
@@ -1198,7 +1198,7 @@ Resources:
       FunctionName: auto_updateuserwallet
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-updateuserwallet.zip
+      CodeUri: ./dr11-updateuserwallet.zip
       Description: ''
       MemorySize: 1024
       Timeout: 215
@@ -1219,7 +1219,7 @@ Resources:
       FunctionName: auto_ballbyball
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-ballbyball.zip
+      CodeUri: ./dr11-ballbyball.zip
       Description: ''
       MemorySize: 704
       Timeout: 183
@@ -1240,7 +1240,7 @@ Resources:
       FunctionName: auto_fetchplayerdata
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/fetch_player_data.zip
+      CodeUri: ./fetch_player_data.zip
       Description: ''
       MemorySize: 1280
       Timeout: 210
@@ -1261,7 +1261,7 @@ Resources:
       FunctionName: auto_leaderboardbymatch
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/leaderboard_by_match.zip
+      CodeUri: ./leaderboard_by_match.zip
       Description: ''
       MemorySize: 1024
       Timeout: 100
@@ -1296,7 +1296,7 @@ Resources:
       FunctionName: auto_myopponentsteam
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/my_opponents_team.zip
+      CodeUri: ./my_opponents_team.zip
       Description: ''
       MemorySize: 1280
       Timeout: 340
@@ -1317,7 +1317,7 @@ Resources:
       FunctionName: auto_privatematches
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/private_match.zip
+      CodeUri: ./private_match.zip
       Description: ''
       MemorySize: 384
       Timeout: 183
@@ -1338,7 +1338,7 @@ Resources:
       FunctionName: auto_publicmatches
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/dr11-publicmatcheslist.zip
+      CodeUri: ./dr11-publicmatcheslist.zip
       Description: ''
       MemorySize: 128
       Timeout: 123
@@ -1359,7 +1359,7 @@ Resources:
       FunctionName: auto_userdata
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/user_data.zip
+      CodeUri: ./user_data.zip
       Description: ''
       MemorySize: 1536
       Timeout: 340
@@ -1380,7 +1380,7 @@ Resources:
       FunctionName: auto_aftermatchupdatewalletandstatus
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/after_match_update_wallet_and_status.zip
+      CodeUri: ./after_match_update_wallet_and_status.zip
       Description: ''
       MemorySize: 1344
       Timeout: 345
@@ -1401,7 +1401,7 @@ Resources:
       FunctionName: auto_livescore
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/live_score.zip
+      CodeUri: ./live_score.zip
       Description: ''
       MemorySize: 832
       Timeout: 183
@@ -1422,7 +1422,7 @@ Resources:
       FunctionName: auto_playersstats
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/playersstats.zip
+      CodeUri: ./playersstats.zip
       Description: ''
       MemorySize: 128
       Timeout: 3
@@ -1443,7 +1443,7 @@ Resources:
       FunctionName: auto_playercheck
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/player_check.zip
+      CodeUri: ./player_check.zip
       Description: ''
       MemorySize: 320
       Timeout: 123
@@ -1465,7 +1465,7 @@ Resources:
     Properties:
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./server/leaderboard_by_league.zip
+      CodeUri: ./leaderboard_by_league.zip
       Description: ''
       MemorySize: 256
       Timeout: 123
